@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><?php // если не указан заголовок страницы, используется заданный по умолчанию заголовок...
+	if (isset($page_title)) { 
+			echo $page_title; 
+	} else { 
+			echo 'Знание - сила, но за все нужно платить'; 
+	} 
+	?></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Настраиваемые стили для данного шаблона -->
+    <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Здесь находится весь контент страницы -->
+    <div id="wrap">
+
+      <!-- Фиксированная навигационная панель -->
+      <div class="navbar navbar-fixed-top">
+        <div class="container">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.php">Знание - сила</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav navbar-nav">
+				<li class="active"><a href="index.php">Домой</a></li>
+				<li><a href="about.php">О нас</a></li>
+				<li><a href="contact.php">Контакты</a></li>
+				<li><a href="register.php">Регистрация</a></li>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Учетная запись <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="logout.php">Выход</a></li>
+                  <li><a href="renew.php">Обновить</a></li>
+                  <li><a href="change_password.php">Изменить пароль</a></li>
+                  <li><a href="favorites.php">Избранное</a></li>
+                  <li><a href="recommendations.php">Рекомендации</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Администратор <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="add_page.php">Добавить страницу</a></li>
+                  <li><a href="add_pdf.php">Добавить PDF</a></li>
+                  <li><a href="#">Другое действие</a></li>
+                </ul>
+              </li>
+
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/container-->
+      </div><!--/navbar-->
+
+      <!-- Начало контента страницы -->
+      <div class="container">
+	
+		<div class="row">
+			
+			<div class="col-3">
+				<h3 class="text-success">Контент</h3>
+			<div class="list-group">
+			  <a href="category.php?id=3" class="list-group-item"><span class="badge">7</span>Общие атаки
+			  </a>
+			  <a href="category.php?id=5" class="list-group-item"><span class="badge">11</span>Безопасность баз данных
+			  </a>
+			  <a href="category.php?id=1" class="list-group-item"><span class="badge">9</span>Общие вопросы безопасности в Интернете
+			  </a>
+			  <a href="category.php?id=4" class="list-group-item"><span class="badge">3</span>Безопасность JavaScript
+			  </a>
+			  <a href="category.php?id=2" class="list-group-item"><span class="badge">2</span>Безопасность PHP
+			  </a>
+			  <a href="pdfs.php" class="list-group-item"><span class="badge">5</span>Справочники в формате PDF
+			  </a>
+			</div><!--/list-group-->
+
+			<form>
+			  <fieldset>
+			    <legend>Вход</legend>
+			    <div class="form-group">
+			      <label for="email">Адрес электронной почты</label>
+			      <input type="text" class="form-control" id="email" placeholder="Введите адрес электронной почты">
+			    </div>
+			    <div class="form-group">
+			      <label for="pass">Пароль</label>
+			      <input type="password" class="form-control" id="pass" placeholder="Пароль">
+			    </div>
+			    <button type="submit" class="btn btn-default">Вход</button>
+			  </fieldset>
+			</form>			
+			</div><!--/col-3-->
+		  
+			
+		  <div class="col-9">
+	       <h1>Добро пожаловать</h1>
+	        <p class="lead">Добро пожаловать на сайт "Знание - сила", посвященный обеспечению безопасности в Интернете и включающий сведения о программировании. Используйте эту информацию в своих целях.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent consectetur volutpat nunc, eget vulputate quam tristique sit amet. Donec suscipit mollis erat in egestas. Morbi id risus quam. Sed vitae erat eu tortor tempus consequat. Morbi quam massa, viverra sed ullamcorper sit amet, ultrices ullamcorper eros. Mauris ultricies rhoncus leo, ac vehicula sem condimentum vel. Morbi varius rutrum laoreet. Maecenas vitae turpis turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce leo turpis, faucibus et consequat eget, adipiscing ut turpis. Donec lacinia sodales nulla nec pellentesque. Fusce fringilla dictum purus in imperdiet. Vivamus at nulla diam, sagittis rutrum diam. Integer porta imperdiet euismod.</p>
+			</div><!--/col-9-->
+		
+		</div><!--/row-->
+
+      </div><!--/container-->
+
+    </div><!--/wrap-->
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted credit"><span class="pull-left"><a href="site_map.php">Карта сайта</a> | <a href="policies.php">Политики</a></span> <span class="pull-right">&copy; Знание - сила, 2013</span></p>
+      </div>
+    </div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+  </body>
+</html>

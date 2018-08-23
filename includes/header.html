@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><?php // Если не задан заголовок страницы, используется заголовок, заданный по умолчанию...
+	if (isset($page_title)) { 
+			echo $page_title; 
+	} else { 
+			echo 'Знание - сила, но за все нужно платить'; 
+	} 
+	?></title>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        
+    
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Пользовательские стили для данного шаблона -->
+    <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Здесь находится контент страницы -->
+    <div id="wrap">
+
+      <!-- Фиксированная панель навигации -->
+      <div class="navbar navbar-fixed-top">
+         <div class="container">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.php">Знание - сила</a>
+      
+<div class="nav-collapse collapse">
+            <ul class="nav navbar-nav">
+<?php // динамическое создание меню заголовка...
+
+// Массив меток и страниц (без расширений)
+$pages = array (
+	'Домой' => 'index.php',
+	'О нас' => '#',
+	'Контакты' => '#',
+	'Регистрация' => 'register.php'
+);
+
+// Просматриваемая страница
+$this_page = basename($_SERVER['PHP_SELF']);
+
+// Создание каждого элемента меню
+foreach ($pages as $k => $v) {
+
+	// Начало элемента
+	echo '<li';
+
+	// Добавление класса, находящегося на текущей странице
+	if ($this_page == $v) echo ' class="active"';
+
+	// Завершение элемента
+	echo '><a href="' . $v . '">' . $k . '</a></li>
+	';
+
+} // Завершение цикла FOREACH
+
+// Отображение параметров пользователя
+if (isset($_SESSION['user_id'])) {
+
+	// Отображение базовых параметров пользователя
+	// Включает ссылки на дополнительный материал, который будет рассмотрен в части IV!
+	echo '<li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Учетная запись<b class="caret"></b></a>
+		<ul class="dropdown-menu">
+			<li><a href="logout.php">Выход</a></li>
+			<li><a href="renew.php">Обновить</a></li>
+			<li><a href="change_password.php">Изменить пароль</a></li>
+			<li><a href="favorites.php">Избранное</a></li>
+			<li><a href="recommendations.php">Рекомендации</a></li>
+		</ul> 
+	</li>';
+
+	// Отображение параметров администратора
+	if (isset($_SESSION['user_admin'])) {
+		echo '<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Администратор <b class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<li><a href="add_page.php">Добавить страницу</a></li>
+				<li><a href="add_pdf.php">Добавить PDF</a></li>
+				<li><a href="#">Другое действие</a></li>
+			</ul>
+		</li>';		
+	}
+	
+} // не установен user_id
+
+?>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-->
+      </div><!--/navbar-->
+
+      <!-- Начало контента страницы -->
+      <div class="container">
+	
+		<div class="row">
+			
+			<div class="col-3">
+				<h3 class="text-success">Контент</h3>
+			<div class="list-group">
+<?php // динамически сгенерированные ссылки на контент
+$q = 'SELECT * FROM categories ORDER BY category';
+$r = mysqli_query($dbc, $q);
+while (list($id, $category) = mysqli_fetch_array($r, MYSQLI_NUM)) {
+	echo '<a href="category.php?id=' . $id . '" class="list-group-item" title="' . $category . '">' . htmlspecialchars($category) . '
+	</a>';
+}
+?>
+			  <a href="pdfs.php" class="list-group-item" title="PDF">PDF-справочники
+			  </a>
+			</div><!--/list-group-->
+
+<?php // нужно ли отобразить форму входа?
+ if (!isset($_SESSION['user_id'])) {
+	require('includes/login_form.inc.php');
+ }
+?>
+			</div><!--/col-3-->
+		  
+			
+		  <div class="col-9">
+			<!-- КОНТЕНТ -->
