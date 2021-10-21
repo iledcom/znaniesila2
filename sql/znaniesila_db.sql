@@ -120,13 +120,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `users`
---
-
-INSERT INTO `users` (`id`, `type`, `username`, `email`, `pass`, `first_name`, `last_name`, `date_created`, `date_expires`, `date_modified`) VALUES
-(1, 'admin', 'konkore', 'konkore@meta.ua', '$2y$10$3OJqs/hMGibCRIvnu03WluwcE4JHOpQkv/NRvmGQyaH8Uo2u4Jaiu', 'Константин', 'Коренев', '2018-08-07 12:04:10', '2020-12-31', '2018-08-17 06:08:50');
-
---
 -- Индексы сохранённых таблиц
 --
 

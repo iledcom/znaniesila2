@@ -1,4 +1,17 @@
 <?php
+
+
+// Более формальная структура комментариев, используемая только в этой странице, но может
+//  применяться в иных случаях
+/* *
+   * Файл конфигурации выполняет следующие действия:
+	* - Собирает настройки сайта в одном месте.
+	* - Хранит URL и URI в виде констант.
+	* - Начинает сеанс.
+	* - Задает порядок обработки ошибок.
+	* - Определяет функцию перенаправления.
+	*
+*/
 	//Зададим значения констант live и contact_email.
 	if(!defined('LIVE')) DEFINE('LIVE', false);
 	DEFINE('CONTACT_EMAIL', 'korenev@iled.com.ua');
@@ -6,6 +19,10 @@
 	DEFINE('BASE_URL', 'znaniesila/');
   DEFINE('MYSQL', BASE_URI . 'mysql.inc.php');
   DEFINE('PDFS_DIR', BASE_URI . 'pdfs/');
+
+  // Для сложного кода HTML
+	DEFINE('BOX_BEGIN', '<!-- box begin --><div class="box alt"><div class="left-top-corner"><div class="right-top-corner"><div class="border-top"></div></div></div><div class="border-left"><div class="border-right"><div class="inner">');
+	DEFINE('BOX_END', '</div></div></div><div class="left-bot-corner"><div class="right-bot-corner"><div class="border-bot"></div></div></div></div><!-- box end -->');
 
 	// Запуск сеанса
   session_start();
